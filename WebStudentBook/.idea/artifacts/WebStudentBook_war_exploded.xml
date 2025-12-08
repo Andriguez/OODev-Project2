@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="WebStudentBook:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebStudentBook_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WebStudentBook" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: jakarta.mvc:jakarta.mvc-api:3.0.0" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../../../../../../../Program Files/mysql-connector-j-9.5.0/mysql-connector-j-9.5.0.jar" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="WebStudentBook/web/Web" />
+    </root>
+  </artifact>
+</component>
