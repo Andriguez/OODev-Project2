@@ -1,4 +1,4 @@
-package com.example.webstudentbook;
+package com.example.webstudentbook.Controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

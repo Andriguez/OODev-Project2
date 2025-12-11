@@ -1,4 +1,4 @@
-package com.example.webstudentbook;
+package com.example.webstudentbook.Controller;
 
 import java.io.*;
 
