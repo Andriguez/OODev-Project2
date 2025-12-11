@@ -19,19 +19,31 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2>List of SG Students</h2>
+        <h2>ESILV Engineer School</h2>
     </div>
 </div>
 <div id="container">
+    <div>
+        <h3>List of Students</h3>
+    </div>
     <div id="content">
         <table>
             <tr>
                 <th>First Name </th>
                 <th>Last Name</th>
                 <th>Email </th>
+                <th colspan="2">Options</th>
             </tr>
             <c:forEach var="tempStudent" items="${STUDENT_LIST}">
                 <c:url var="EditLink" value="EditStudentServlet">
+                    <c:param name="studentId" value="${tempStudent.id}"/>
+                </c:url>
+                <c:url var="DeleteLink" value="EditStudentServlet">
+                    <c:param name="studentId" value="${tempStudent.id}"/>
+                </c:url>
+
+                <c:url var="DeleteLink" value="StudentControllerServlet">
+                    <c:param name="command" value="DELETE"/>
                     <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
 
@@ -40,6 +52,7 @@
                     <td>${tempStudent.lastName}</td>
                     <td>${tempStudent.email}</td>
                     <td><a href="${EditLink}">Edit</a></td>
+                    <td><a href="${DeleteLink}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>

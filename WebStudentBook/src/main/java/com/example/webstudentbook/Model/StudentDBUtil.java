@@ -102,8 +102,26 @@ public class StudentDBUtil {
         finally{
             close(myConn,myStmt,null);
         }
-
     }
+
+    public void deleteStudent(int id) {
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        try {
+            myConn = dataSource.getConnection();
+            String sql = "delete from student where id = ?";
+            myStmt = myConn.prepareStatement(sql);
+            myStmt.setInt(1, id);
+
+            myStmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        finally{
+            close(myConn,myStmt,null);
+        }
+    }
+
         private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
         try{
             if(myStmt!=null)

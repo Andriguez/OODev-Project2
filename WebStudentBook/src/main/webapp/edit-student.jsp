@@ -23,31 +23,29 @@
     </div>
 </div>
 <div id="container">
+    <a href="StudentControllerServlet">Back to List</a>
     <h3> Edit a Student</h3>
-    <form action="EditStudentServlet" method = "post">
-        <table>
-            <tbody>
-            <tr>
-                <td><label>FirstName: </label> </td>
-                <td><input type="text" name = "firstName" value="${Student.firstName}"/></td>
-            </tr>
-            <tr>
-                <td><label>LastName: </label> </td>
-                <td><input type="text" name = "lastName" value="${Student.lastName}"/></td>
-            </tr>
-            <tr>
-                <td><label>Email: </label> </td>
-                <td><input type="text" name = "email" value="${Student.email}"/></td>
-            </tr>
-            <tr>
-                <td><label></label> </td>
-                <td><input type="submit" value = "Save"/></td>
-            </tr>
-            </tbody>
-        </table>
+    <form action="EditStudentServlet" method="post" class="form-layout form-centered">
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" name="firstName" value="${Student.firstName}">
+        </div>
+
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" name="lastName" value="${Student.lastName}">
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="text" name="email" value="${Student.email}">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="saveBtn">Save</button>
+        </div>
     </form>
     <div style="clear:both;"></div>
-    <a href="StudentControllerServlet">Back to List</a>
 </div>
 </body>
 </html>
