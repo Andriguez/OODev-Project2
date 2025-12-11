@@ -14,12 +14,11 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-@WebServlet("/EditStudentServlet")
-public class EditStudentServlet extends HttpServlet {
+@WebServlet("/AddStudentServlet")
+public class AddStudentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private StudentDBUtil studentDBUtil;
     private DataSource dataSource;
-    int id;
 
     private DataSource getDataSource() throws NamingException {
         String jndi = "java:comp/env/jdbc/studentdb";
@@ -39,26 +38,24 @@ public class EditStudentServlet extends HttpServlet {
         }
     }
 
-    public EditStudentServlet() {
+    public AddStudentServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        id = Integer.parseInt(request.getParameter("studentId"));
-        Student student = studentDBUtil.fetchStudent(id);
-        request.setAttribute("Student", student);
-        request.getRequestDispatcher("edit-student.jsp").forward(request, response);
+        request.getRequestDispatcher("add-student.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
-            ServletException, IOException {
-        String fn= request.getParameter("firstName");
-        String ln= request.getParameter("lastName");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String name = request.getParameter("firstName");
+        String lastname = request.getParameter("lastName");
         String email = request.getParameter("email");
-        Student student = new Student(id,fn,ln,email);
-        studentDBUtil.updateStudent(student);
+
+        Student student = new Student(name, lastname, email);
+        studentDBUtil.addStudent(student);
         response.sendRedirect("StudentControllerServlet");
+
     }
 }

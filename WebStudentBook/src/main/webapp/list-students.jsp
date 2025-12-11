@@ -43,6 +43,13 @@
                 </tr>
             </c:forEach>
         </table>
+
+        <div style="margin: 5px;">
+            <c:url var="AddStudentLink" value="AddStudentServlet" />
+            <form action="${AddStudentLink}" method="get">
+                <button>Add new student</button>
+            </form>
+        </div>
     </div>
 </div>
 </body>
