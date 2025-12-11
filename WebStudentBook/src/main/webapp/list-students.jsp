@@ -30,7 +30,12 @@
                 <th>Last Name</th>
                 <th>Email </th>
             </tr>
-            <c:forEach var="tempStudent" items="${STUDENT_LIST}">
+   <c:forEach var="tempStudent" items="${STUDENT_LIST}">
+    <c:url var="DeleteLink" value="EditStudentServlet">
+        <c:param name="studentId" value="${tempStudent.id}"/>
+    </c:url>
+
+    <c:forEach var="tempStudent" items="${STUDENT_LIST}">
                 <c:url var="EditLink" value="EditStudentServlet">
                     <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
@@ -39,7 +44,7 @@
                     <td>${tempStudent.firstName}</td>
                     <td>${tempStudent.lastName}</td>
                     <td>${tempStudent.email}</td>
-                    <td><a href="${EditLink}">Edit</a></td>
+                    <td><a href="${EditLink}"> Edit</a></td>
                 </tr>
             </c:forEach>
         </table>
