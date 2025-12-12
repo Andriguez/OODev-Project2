@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*,com.example.webstudentbook.jdbc.*" %>
+<%@ page import="java.util.*" %>
 <%@ page import="com.example.webstudentbook.Model.Student" %>
 
 <html>
@@ -30,11 +30,6 @@
                 <th>Last Name</th>
                 <th>Email </th>
             </tr>
-   <c:forEach var="tempStudent" items="${STUDENT_LIST}">
-    <c:url var="DeleteLink" value="EditStudentServlet">
-        <c:param name="studentId" value="${tempStudent.id}"/>
-    </c:url>
-
     <c:forEach var="tempStudent" items="${STUDENT_LIST}">
                 <c:url var="EditLink" value="EditStudentServlet">
                     <c:param name="studentId" value="${tempStudent.id}"/>
