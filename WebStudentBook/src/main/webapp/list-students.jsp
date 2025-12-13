@@ -17,10 +17,7 @@
         response.sendRedirect("login.jsp");
         return;
     }
-    if (!"instructor".equals(role)) {
-
-        return;
-    }
+    
 %>
 
 <html>
