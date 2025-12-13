@@ -122,7 +122,39 @@ public class StudentDBUtil {
         }
     }
 
-        private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
+    /**
+     * Authenticate user from the database
+     * @param username the username
+     * @param password the password
+     * @return User object if credentials are valid, null otherwise
+     * @throws Exception if database error occurs
+     */
+    public User authenticateUser(String username, String password) throws Exception {
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        ResultSet myRs = null;
+        User user = null;
+
+        try {
+            myConn = dataSource.getConnection();
+            String sql = "select * from users where username=? and password=?";
+            myStmt = myConn.prepareStatement(sql);
+            myStmt.setString(1, username);
+            myStmt.setString(2, password);
+            myRs = myStmt.executeQuery();
+
+            if(myRs.next()) {
+                String role = myRs.getString("role");
+                user = new User(username, password, role);
+            }
+
+            return user;
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+    }
+
+    private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
         try{
             if(myStmt!=null)
                 myStmt.close();
