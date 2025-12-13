@@ -17,16 +17,33 @@
 </head>
 <% List<Student> theStudents = (List<Student>)request.getAttribute("STUDENT_LIST"); %>
 <body>
+<div id="wrapper">
+    <div id="header">
+        <h2>ESILV Engineer School</h2>
+    </div>
+</div>
 <div id="container">
+    <div>
+        <h3>List of Students</h3>
+    </div>
     <div id="content">
         <table>
             <tr>
                 <th>First Name </th>
                 <th>Last Name</th>
                 <th>Email </th>
+                <th colspan="2">Options</th>
             </tr>
-    <c:forEach var="tempStudent" items="${STUDENT_LIST}">
+            <c:forEach var="tempStudent" items="${STUDENT_LIST}">
                 <c:url var="EditLink" value="EditStudentServlet">
+                    <c:param name="studentId" value="${tempStudent.id}"/>
+                </c:url>
+                <c:url var="DeleteLink" value="EditStudentServlet">
+                    <c:param name="studentId" value="${tempStudent.id}"/>
+                </c:url>
+
+                <c:url var="DeleteLink" value="StudentControllerServlet">
+                    <c:param name="command" value="DELETE"/>
                     <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
 
@@ -34,10 +51,18 @@
                     <td>${tempStudent.firstName}</td>
                     <td>${tempStudent.lastName}</td>
                     <td>${tempStudent.email}</td>
-                    <td><a href="${EditLink}"> Edit</a></td>
+                    <td><a href="${EditLink}">Edit</a></td>
+                    <td><a href="${DeleteLink}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
+
+        <div style="margin: 5px;">
+            <c:url var="AddStudentLink" value="AddStudentServlet" />
+            <form action="${AddStudentLink}" method="get">
+                <button>Add new student</button>
+            </form>
+        </div>
     </div>
 </div>
 </body>
