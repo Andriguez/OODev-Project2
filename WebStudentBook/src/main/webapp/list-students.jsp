@@ -13,13 +13,12 @@
     String username = (String) session.getAttribute("username");
     String role = (String) session.getAttribute("role");
 
-    if(username == null) {
+    if (username == null) {
         response.sendRedirect("login.jsp");
         return;
     }
+    if (!"instructor".equals(role)) {
 
-    if(!"instructor".equals(role)) {
-        response.sendRedirect("StudentControllerServlet");
         return;
     }
 %>
@@ -67,18 +66,21 @@
                     <td>${tempStudent.firstName}</td>
                     <td>${tempStudent.lastName}</td>
                     <td>${tempStudent.email}</td>
+                    <c:if test='${sessionScope.role == "instructor"}'>
                     <td><a href="${EditLink}">Edit</a></td>
                     <td><a href="${DeleteLink}">Delete</a></td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>
-
+        <c:if test='${sessionScope.role == "instructor"}'>
         <div style="margin: 5px;">
             <c:url var="AddStudentLink" value="AddStudentServlet" />
-            <form action="${AddStudentLink}" method="get">
+                 <form action="${AddStudentLink}" method="get">
                 <button>Add new student</button>
             </form>
         </div>
+        </c:if>
     </div>
 </div>
 </body>
