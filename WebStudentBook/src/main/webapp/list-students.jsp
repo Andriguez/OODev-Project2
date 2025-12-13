@@ -17,12 +17,6 @@
 </head>
 <% List<Student> theStudents = (List<Student>)request.getAttribute("STUDENT_LIST"); %>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2>List of SG Students</h2>
-        <p><a href="LogoutServlet">Logout</a></p>
-    </div>
-</div>
 <div id="container">
     <div id="content">
         <table>
