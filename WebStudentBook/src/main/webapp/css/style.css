@@ -1,47 +1,109 @@
-html, body{
-	margin-left:15px; margin-right:15px; 
-	padding:0px; 
-	font-family:Verdana, Arial, Helvetica, sans-serif;
+/* ===== Global Page Styling ===== */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
 
-table {   
-	border-collapse:collapse;
-	border-bottom:1px solid gray;
-	font-family: Tahoma,Verdana,Segoe,sans-serif;
-	width:72%;
+/* ===== Layout Wrappers ===== */
+#wrapper {
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
- 
+
+#header {
+    padding: 20px;
+    text-align: center;
+    background: #333333;
+    color: white;
+}
+
+#header h2 {
+    margin: 0;
+    font-weight: 500;
+    font-style: italic;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+#container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* ===== Table Styling ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: white;
+}
+
 th {
-	border-bottom:1px solid gray;
-	background:none repeat scroll 0 0 #0775d3;
-	padding:10px;
-	color: #FFFFFF;
+    background: #333333;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
-tr {
-	border-top:1px solid gray;
-	text-align:center;	
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e5e5;
 }
- 
-tr:nth-child(even) {background: white}
-tr:nth-child(odd) {background: #BBBBBB}	
- 
-#wrapper {width: 100%; margin-top: 0px; }
-#header {width: 70%; background: black; margin-top: 0px; padding:15px 0px 15px 15px;}
-#header h2 {width: 100%; margin:auto; color: #FFFFFF;}
-#container {width: 100%; margin:auto}
-#container h3 {color: #000;}
-#container #content {margin-top: 20px;}
 
-.add-student-button {
-	border: 1px solid #666; 
-	border-radius: 5px; 
-	padding: 4px; 
-	font-size: 12px;
-	font-weight: bold;
-	width: 120px; 
-	padding: 5px 10px; 
-	
-	margin-bottom: 15px;
-	background: #cccccc;
+/* Hover effect for rows */
+tr:hover td {
+    background: #f0f5ff;
+}
+
+/* ===== Links ===== */
+a {
+    color: #2d6cdf;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Buttons ===== */
+button {
+    background: dimgray;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.1s ease;
+}
+
+button:hover {
+    background: lightgray;
+    color: #333333;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* ===== Utility spacing ===== */
+#content {
+    padding: 10px;
+}
+
+form {
+    margin: 0;
 }

@@ -84,6 +84,44 @@ public class StudentDBUtil {
         }
     }
 
+    public void addStudent(Student student) {
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        try {
+            myConn = dataSource.getConnection();
+            String sql = "insert into student (first_name, last_name, email) values (?, ?, ?)";
+            myStmt = myConn.prepareStatement(sql);
+            myStmt.setString(1, student.getFirstName());
+            myStmt.setString(2, student.getLastName());
+            myStmt.setString(3, student.getEmail());
+
+            myStmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        finally{
+            close(myConn,myStmt,null);
+        }
+    }
+
+    public void deleteStudent(int id) {
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        try {
+            myConn = dataSource.getConnection();
+            String sql = "delete from student where id = ?";
+            myStmt = myConn.prepareStatement(sql);
+            myStmt.setInt(1, id);
+
+            myStmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        finally{
+            close(myConn,myStmt,null);
+        }
+    }
+
     /**
      * Authenticate user from the database
      * @param username the username

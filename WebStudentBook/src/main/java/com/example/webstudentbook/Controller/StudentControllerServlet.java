@@ -47,7 +47,13 @@ public class StudentControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         try {
-            listStudents(request,response);
+            String command = request.getParameter("command");
+
+            if (command != null && command.equals("DELETE")){
+                deleteStudent(request,response);
+            } else {
+                listStudents(request,response);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -58,5 +64,15 @@ public class StudentControllerServlet extends HttpServlet {
         request.setAttribute("STUDENT_LIST", students);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/list-students.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void deleteStudent(HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        int studentId = Integer.parseInt(request.getParameter("studentId"));
+
+        studentDBUtil.deleteStudent(studentId);
+
+        response.sendRedirect("StudentControllerServlet");
     }
 }

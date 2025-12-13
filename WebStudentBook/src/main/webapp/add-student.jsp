@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: brhig
   Date: 11/12/2025
-  Time: 10:48
+  Time: 12:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
@@ -14,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link type="text/css" rel="stylesheet" href="css/add-student-style.css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
-    <title>Edit a student</title>
+    <title>Add a new student</title>
 </head>
 <body>
 <div id="wrapper">
@@ -24,8 +24,8 @@
 </div>
 <div id="container">
     <a href="StudentControllerServlet">Back to List</a>
-    <h3> Edit a Student</h3>
-    <form action="EditStudentServlet" method="post" class="form-layout form-centered">
+    <h3> Add a new Student</h3>
+    <form action="AddStudentServlet" method="post" class="form-layout form-centered">
         <div class="form-group">
             <label>First Name:</label>
             <input type="text" name="firstName" value="${Student.firstName}">
@@ -45,6 +45,7 @@
             <button type="submit" class="saveBtn">Save</button>
         </div>
     </form>
+
     <div style="clear:both;"></div>
 </div>
 </body>

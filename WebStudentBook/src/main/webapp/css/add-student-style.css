@@ -12,6 +12,28 @@ label {
 	margin-bottom: 8px;
 }
 
+input[type="submit"] {
+    width: auto;
+}
+
+.saveBtn {
+    width: auto;
+    background: dimgray;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.1s ease;
+}
+
+saveBtn:hover {
+    background: lightgray;
+    color: #333333;
+    transform: translateY(-1px);
+}
+
 input {
 	width: 250px;
 	border: 1px solid #666; 
@@ -28,16 +50,68 @@ input {
 	background: #cccccc;
 }
 
-table {   
-	border-style:none;
-	width:50%;
+/* ===== Modern Form Layout ===== */
+
+.form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
 }
 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #FFFFFF}
-
-tr {
-	border-style:none;
-	text-align:left;	
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
-	
+
+.form-group label {
+    font-size: 15px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 15px;
+    background: #fafafa;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #2d6cdf;
+    outline: none;
+    background: #ffffff;
+}
+
+.form-actions {
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* Enhance Save button */
+button.saveBtn {
+    background: #333333;
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+button.saveBtn:hover {
+    background: #555555;
+    transform: translateY(-1px);
+}
+
+.form-centered {
+    max-width: 400px;          /* how wide the form should be */
+    margin: 0 auto;            /* auto margins center it */
+}
+
+/* Optional: center the Save button nicely */
+.form-actions {
+    text-align: center;
+    margin-top: 10px;
+}
+
