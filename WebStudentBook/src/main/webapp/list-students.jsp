@@ -20,6 +20,7 @@
 <div id="wrapper">
     <div id="header">
         <h2>List of SG Students</h2>
+        <p><a href="LogoutServlet">Logout</a></p>
     </div>
 </div>
 <div id="container">
