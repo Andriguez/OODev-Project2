@@ -9,6 +9,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.webstudentbook.Model.Student" %>
+<%
+    String username = (String) session.getAttribute("username");
+    String role = (String) session.getAttribute("role");
+
+    if(username == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+    if(!"instructor".equals(role)) {
+        response.sendRedirect("StudentControllerServlet");
+        return;
+    }
+%>
 
 <html>
 <head>
@@ -20,6 +34,7 @@
 <div id="wrapper">
     <div id="header">
         <h2>ESILV Engineer School</h2>
+        <p><a href="LogoutServlet">Logout</a></p>
     </div>
 </div>
 <div id="container">
@@ -27,6 +42,7 @@
         <h3>List of Students</h3>
     </div>
     <div id="content">
+
         <table>
             <tr>
                 <th>First Name </th>
