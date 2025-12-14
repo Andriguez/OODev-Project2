@@ -107,3 +107,45 @@ button:active {
 form {
     margin: 0;
 }
+
+.access-box {
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 30px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.access-box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.access-box p {
+    margin: 10px 0;
+    font-size: 15px;
+    color: #555555;
+}
+
+.access-hint {
+    font-size: 14px;
+    color: #777777;
+    margin-top: 15px;
+}
+
+/* Back link styled as subtle action */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #2d6cdf;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

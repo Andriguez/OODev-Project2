@@ -2,6 +2,7 @@ package com.example.webstudentbook.Controller;
 
 import com.example.webstudentbook.Model.Student;
 import com.example.webstudentbook.Model.StudentDBUtil;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -46,8 +47,10 @@ public class AddStudentServlet extends HttpServlet {
             throws ServletException, IOException {
         String role = (String) request.getSession().getAttribute("role");
         if (!"instructor".equals(role)) {
-            response.sendRedirect("StudentControllerServlet");
-            return;
+            request.setAttribute("restrictedPage", "Add new Student");
+            RequestDispatcher dispatcher =
+                    request.getRequestDispatcher("/error-page.jsp");
+            dispatcher.forward(request, response);
         }
 
         request.getRequestDispatcher("add-student.jsp").forward(request, response);
@@ -57,8 +60,10 @@ public class AddStudentServlet extends HttpServlet {
             throws ServletException, IOException {
         String role = (String) request.getSession().getAttribute("role");
         if (!"instructor".equals(role)) {
-            response.sendRedirect("StudentControllerServlet");
-            return;
+            request.setAttribute("restrictedPage", "Add new Student");
+            RequestDispatcher dispatcher =
+                    request.getRequestDispatcher("/error-page.jsp");
+            dispatcher.forward(request, response);
         }
         String name = request.getParameter("firstName");
         String lastname = request.getParameter("lastName");
@@ -67,6 +72,5 @@ public class AddStudentServlet extends HttpServlet {
         Student student = new Student(name, lastname, email);
         studentDBUtil.addStudent(student);
         response.sendRedirect("StudentControllerServlet");
-
     }
 }

@@ -2,6 +2,7 @@ package com.example.webstudentbook.Controller;
 
 import com.example.webstudentbook.Model.Student;
 import com.example.webstudentbook.Model.StudentDBUtil;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -48,7 +49,10 @@ public class EditStudentServlet extends HttpServlet {
             throws ServletException, IOException {
         String role = (String) request.getSession().getAttribute("role");
         if (!"instructor".equals(role)) {
-            response.sendRedirect("StudentControllerServlet");
+            request.setAttribute("restrictedPage", "Edit Student");
+            RequestDispatcher dispatcher =
+                    request.getRequestDispatcher("/error-page.jsp");
+            dispatcher.forward(request, response);
         } else {
             id = Integer.parseInt(request.getParameter("studentId"));
             Student student = studentDBUtil.fetchStudent(id);
@@ -61,8 +65,10 @@ public class EditStudentServlet extends HttpServlet {
             ServletException, IOException {
         String role = (String) request.getSession().getAttribute("role");
         if (!"instructor".equals(role)) {
-            response.sendRedirect("StudentControllerServlet");
-            return;
+            request.setAttribute("restrictedPage", "Edit Student");
+            RequestDispatcher dispatcher =
+                    request.getRequestDispatcher("/error-page.jsp");
+            dispatcher.forward(request, response);
         }
         String fn= request.getParameter("firstName");
         String ln= request.getParameter("lastName");
