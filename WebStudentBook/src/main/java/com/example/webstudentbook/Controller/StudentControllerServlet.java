@@ -50,7 +50,10 @@ public class StudentControllerServlet extends HttpServlet {
             String command = request.getParameter("command");
 
             if (command != null && command.equals("DELETE")){
-                deleteStudent(request,response);
+                String role = (String) request.getSession().getAttribute("role");
+                if ("instructor".equals(role)) {
+                    deleteStudent(request,response);
+                }
             } else {
                 listStudents(request,response);
             }
