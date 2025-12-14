@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <c:if test='${sessionScope.role != "instructor"}'>
-    <c:set var="restrictedPage" value="Edit new Student" scope="request"/>
+    <c:set var="restrictedPage" value="Edit Student" scope="request"/>
     <jsp:forward page="/error-page.jsp"/>
 </c:if>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
