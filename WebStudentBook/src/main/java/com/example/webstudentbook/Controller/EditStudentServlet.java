@@ -49,12 +49,12 @@ public class EditStudentServlet extends HttpServlet {
         String role = (String) request.getSession().getAttribute("role");
         if (!"instructor".equals(role)) {
             response.sendRedirect("StudentControllerServlet");
-            return;
+        } else {
+            id = Integer.parseInt(request.getParameter("studentId"));
+            Student student = studentDBUtil.fetchStudent(id);
+            request.setAttribute("Student", student);
+            request.getRequestDispatcher("edit-student.jsp").forward(request, response);
         }
-        id = Integer.parseInt(request.getParameter("studentId"));
-        Student student = studentDBUtil.fetchStudent(id);
-        request.setAttribute("Student", student);
-        request.getRequestDispatcher("edit-student.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws

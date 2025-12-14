@@ -49,6 +49,7 @@ public class AddStudentServlet extends HttpServlet {
             response.sendRedirect("StudentControllerServlet");
             return;
         }
+
         request.getRequestDispatcher("add-student.jsp").forward(request, response);
     }
 
