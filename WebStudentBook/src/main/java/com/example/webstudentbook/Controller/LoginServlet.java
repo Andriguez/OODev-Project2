@@ -23,9 +23,6 @@ public class LoginServlet extends HttpServlet {
     private StudentDBUtil studentDBUtil;
     private DataSource dataSource;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LoginServlet() {
         super();
     }
@@ -51,28 +48,27 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Get username and password from the login form
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         try {
-            // Authenticate the user
             User user = studentDBUtil.authenticateUser(username, password);
 
             if(user != null) {
-                // User is valid - create session
+
                 HttpSession session = request.getSession();
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("role", user.getRole());
 
+
                 Cookie userCookie = new Cookie("username", username);
-                userCookie.setMaxAge(60 * 60 * 24 * 30); // 30 days
+                userCookie.setMaxAge(60 * 60 * 24 * 30);
                 response.addCookie(userCookie);
 
+                // Redirect to student list
                 response.sendRedirect("StudentControllerServlet");
 
             } else {
-
                 request.setAttribute("error", "Invalid username or password!");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }

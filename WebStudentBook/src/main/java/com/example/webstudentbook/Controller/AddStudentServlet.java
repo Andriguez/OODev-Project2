@@ -44,11 +44,21 @@ public class AddStudentServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String role = (String) request.getSession().getAttribute("role");
+        if (!"instructor".equals(role)) {
+            response.sendRedirect("StudentControllerServlet");
+            return;
+        }
         request.getRequestDispatcher("add-student.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String role = (String) request.getSession().getAttribute("role");
+        if (!"instructor".equals(role)) {
+            response.sendRedirect("StudentControllerServlet");
+            return;
+        }
         String name = request.getParameter("firstName");
         String lastname = request.getParameter("lastName");
         String email = request.getParameter("email");

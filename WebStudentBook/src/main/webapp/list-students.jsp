@@ -9,6 +9,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.webstudentbook.Model.Student" %>
+<%
+    String username = (String) session.getAttribute("username");
+    String role = (String) session.getAttribute("role");
+
+    if (username == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+%>
 
 <html>
 <head>
@@ -20,6 +30,7 @@
 <div id="wrapper">
     <div id="header">
         <h2>ESILV Engineer School</h2>
+        <p><a href="LogoutServlet">Logout</a></p>
     </div>
 </div>
 <div id="container">
@@ -27,6 +38,7 @@
         <h3>List of Students</h3>
     </div>
     <div id="content">
+
         <table>
             <tr>
                 <th>First Name </th>
@@ -51,18 +63,21 @@
                     <td>${tempStudent.firstName}</td>
                     <td>${tempStudent.lastName}</td>
                     <td>${tempStudent.email}</td>
+                    <c:if test='${sessionScope.role == "instructor"}'>
                     <td><a href="${EditLink}">Edit</a></td>
                     <td><a href="${DeleteLink}">Delete</a></td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>
-
+        <c:if test='${sessionScope.role == "instructor"}'>
         <div style="margin: 5px;">
             <c:url var="AddStudentLink" value="AddStudentServlet" />
-            <form action="${AddStudentLink}" method="get">
+                 <form action="${AddStudentLink}" method="get">
                 <button>Add new student</button>
             </form>
         </div>
+        </c:if>
     </div>
 </div>
 </body>
