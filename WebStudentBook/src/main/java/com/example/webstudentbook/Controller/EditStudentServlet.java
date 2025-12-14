@@ -46,6 +46,11 @@ public class EditStudentServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String role = (String) request.getSession().getAttribute("role");
+        if (!"instructor".equals(role)) {
+            response.sendRedirect("StudentControllerServlet");
+            return;
+        }
         id = Integer.parseInt(request.getParameter("studentId"));
         Student student = studentDBUtil.fetchStudent(id);
         request.setAttribute("Student", student);
@@ -54,6 +59,11 @@ public class EditStudentServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
+        String role = (String) request.getSession().getAttribute("role");
+        if (!"instructor".equals(role)) {
+            response.sendRedirect("StudentControllerServlet");
+            return;
+        }
         String fn= request.getParameter("firstName");
         String ln= request.getParameter("lastName");
         String email = request.getParameter("email");
