@@ -44,7 +44,9 @@
                 <th>First Name </th>
                 <th>Last Name</th>
                 <th>Email </th>
+            <c:if test='${sessionScope.role == "instructor"}'>
                 <th colspan="2">Options</th>
+            </c:if>
             </tr>
             <c:forEach var="tempStudent" items="${STUDENT_LIST}">
                 <c:url var="EditLink" value="EditStudentServlet">
